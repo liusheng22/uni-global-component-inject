@@ -1,0 +1,15 @@
+{
+  "name": "global-component-inject-monorepo",
+  "type": "commonjs",
+  "version": "1.0.0",
+  "workspaces": ["packages/*", "packages/playground/*"],
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "bootstrap": "npm install"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^4.3.0",
+    "eslint": "^9.21.0"
+  }
+}

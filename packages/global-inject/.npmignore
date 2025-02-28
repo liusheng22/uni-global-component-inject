@@ -1,0 +1,13 @@
+.vscode
+.editorconfig
+.eslintignore
+.eslintrc.js
+.gitignore
+.gitlab-ci.yml
+.npmrc
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+yarn-error.log
+prettier.config.js
+eslint.config.js

@@ -1,0 +1,92 @@
+{
+  "injectLoader": {
+    /* 同一全局组件 injectTags or injectCode 二选一即可 */
+    "injectTags": [ // 以标签的形式插入到每一个页面
+      {
+        "name": "CustomModal",
+        "element": "<CustomModal ref=\"customModal\" :show.sync=\"isShow\" :title=\"title\" @confirm=\"confirmHandle\" @close=\"closeHandle\" />",
+        "excludes": []
+      },
+      {
+        "name": "CustomTips",
+        "element": "<CustomTips ref=\"customTipsRef\" :tips=\"tips\" />",
+        "excludes": ["pages/no-inject-tags"]
+      }
+    ],
+    // 排除哪些页面不需要注入全局组件标签
+    "excludeTagsPaths": ["pages/no-all-tags"],
+    "injectCode": [ // 以代码的形式插入到每一个页面
+      { "name": "RouteNavigator", "excludes": ["pages/no-inject-code"] }
+    ],
+    // 排除哪些页面不需要注入全局组件代码
+    "excludeCodePaths": ["pages/no-all-code"],
+    "rootEle": "view"
+  },
+  "pages": [ // pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+    {
+      "path": "pages/hello",
+      "style": {
+        "navigationBarTitleText": "Hello"
+      }
+    },
+    {
+      "path": "pages/movable",
+      "style": {
+        "navigationBarTitleText": "Movable",
+        // 该页面自定义注入组件
+        "injectTags": [
+          {
+            "name": "MovableButton",
+            "element": "<MovableButton ref=\"movableButton\" :label=\"title\" @movableClick=\"movableClick\" />"
+          },
+          {
+            "name": "CustomModal",
+            "element": "<CustomModal ref=\"customModal\" :show.sync=\"isShow\" :title=\"title\" @confirm=\"confirmHandle\" @close=\"closeHandle\" />"
+          }
+        ],
+        "rootEle": "view"
+      }
+    },
+    {
+      "path": "pages/album",
+      "style": {
+        "navigationBarTitleText": "Album",
+        // 该页面自定义注入组件
+        "injectCode": [
+          { "name": "CustomImage" },
+          { "name": "RouteNavigator" }
+        ]
+      }
+    },
+    {
+      "path": "pages/no-all-tags",
+      "style": {
+        "navigationBarTitleText": "No All Tags"
+      }
+    },
+    {
+      "path": "pages/no-all-code",
+      "style": {
+        "navigationBarTitleText": "No All Code"
+      }
+    },
+    {
+      "path": "pages/no-inject-tags",
+      "style": {
+        "navigationBarTitleText": "No Inject Tags"
+      }
+    },
+    {
+      "path": "pages/no-inject-code",
+      "style": {
+        "navigationBarTitleText": "No Inject Code"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  }
+}

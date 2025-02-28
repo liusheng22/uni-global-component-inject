@@ -1,0 +1,49 @@
+{
+  "injectLoader": {
+    // 以标签的形式插入到每一个页面
+    "injectTags": [
+      {
+        "name": "CustomModal",
+        "element": "<CustomModal :title=\"title\" />"
+      },
+      {
+        "name": "RouteNavigator"
+      },
+      {
+        "name": "CustomTips",
+        "element": "<CustomTips :tips=\"title\" />",
+        "excludes": ["pages/movable"] // 可以配置排除哪些页面不需要注入该组件
+      }
+    ],
+    // 排除哪些页面不需要注入全局组件
+    "excludeTagsPaths": [],
+    "rootEle": "view"
+  },
+  "pages": [ // pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+    {
+      "path": "pages/hello",
+      "style": {
+        "navigationBarTitleText": "Hello"
+      }
+    },
+    {
+      "path": "pages/movable",
+      "style": {
+        "navigationBarTitleText": "Movable",
+        // 仅仅将 MovableButton 注入到该页面，舍弃其他全局组件注册
+        "injectTags": [
+          {
+            "name": "MovableButton",
+            "element": "<MovableButton ref=\"movableButtonRef\" :label=\"title\" @movableClick=\"movableClick\" />"
+          }
+        ]
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  }
+}

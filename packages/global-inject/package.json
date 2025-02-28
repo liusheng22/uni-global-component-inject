@@ -1,0 +1,46 @@
+{
+  "name": "uni-global-component-inject",
+  "type": "commonjs",
+  "version": "1.0.0",
+  "description": "uni-app 全局组件注入",
+  "author": "liusheng",
+  "license": "MIT",
+  "homepage": "https://github.com/liusheng22/uni-global-component-inject",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/liusheng22/uni-global-component-inject"
+  },
+  "keywords": [
+    "uni-app",
+    "uni",
+    "uniapp",
+    "global-component",
+    "global-component-inject",
+    "easycom",
+    "全局组件",
+    "全局弹窗",
+    "全局注入",
+    "全局组件注入"
+  ],
+  "exports": {
+    ".": "./index.js",
+    "./loader": "./loader.js",
+    "./vite": "./vite.js"
+  },
+  "main": "./index.js",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "dependencies": {
+    "@babel/generator": "^7.23.6",
+    "@babel/parser": "^7.23.6",
+    "@babel/traverse": "^7.23.7",
+    "@babel/types": "^7.23.6",
+    "@dcloudio/vue-cli-plugin-uni": "2.0.2-3090620231104001",
+    "@vue/compiler-sfc": "^3.3.11",
+    "deepmerge": "^4.3.1",
+    "strip-json-comments": "^2.0.1",
+    "vue-template-compiler": "^2.6.10"
+  }
+}
