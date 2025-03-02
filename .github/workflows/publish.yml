@@ -3,7 +3,7 @@ name: Release to npm
 on:
   push:
     tags:
-      - 'v*.*.*' # 匹配 v1.0.0 这样的 tag
+      - 'v*.*.*'
 
 jobs:
   release:
@@ -14,18 +14,20 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
+      - name: Set up Node.js with pnpm
         uses: actions/setup-node@v3
         with:
-          node-version: '16' # 可根据你的需求调整
+          node-version: '18'
           registry-url: 'https://registry.npmjs.org/'
+          cache: 'pnpm'
+          cache-dependency-path: '**/pnpm-lock.yaml'
 
       - name: Install dependencies
-        run: npm install
+        run: pnpm install
         working-directory: ./packages/global-inject
 
       - name: Publish to npm
-        run: npm publish
+        run: pnpm publish
         working-directory: ./packages/global-inject
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
