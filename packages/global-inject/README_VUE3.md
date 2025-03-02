@@ -1,60 +1,35 @@
 # 简介
 
-`uni-global-component-inject` 是一个专为 UniApp 项目设计的工具，帮助开发者通过 pages.json 配置全局组件的注入。它支持 Vue 2（基于 Webpack）和 Vue 3（基于 Vite）的 UniApp 项目，让 `App` 也能够注册全局组件。
+`uni-global-component-inject` 是一个专为 UniApp 项目设计的工具，帮助开发者通过 pages.json 配置全局组件的注入。它支持 Vue 2（基于 Webpack）和 Vue 3（基于 Vite）的 UniApp 项目，让 `uni-app` 的 `App` 也能够注册全局组件了。
 
 ## 特性
 
 - 支持 UniApp Vue 2（Webpack）和 Vue 3（Vite）项目。
-- 通过 pages.json 配置全局组件注入。
+- 通过 pages.json 配置哪些全局组件。
 - 自动合并组件的脚本、模板和样式。
 - 提供灵活的排除机制，允许特定页面跳过注入。
 
-## 配置过程 [切换到VUE3配置](README_VUE3.md)
+## 配置过程 [切换到VUE2配置](README.md)
 ### 第一步 安装依赖
 ```bash
-npm install uni-global-component-inject -D
+pnpm add uni-global-component-inject -D
 ```
 ### 第二步 配置 Loader
 在 vue.config.js 中配置 Loader：
 ```javascript
-const path = require('node:path')
-const { defineConfig } = require('@vue/cli-service')
+import uni from '@dcloudio/vite-plugin-uni'
+import uniGlobalComponentPlugin from 'uni-global-component-inject/vite'
+import { defineConfig } from 'vite'
 
-// src 的工程目录下的 vue.config.js
-const projectRoot = path.resolve(__dirname, '../')
-const uniGlobalComponentInject = path.resolve(projectRoot, 'node_modules/uni-global-component-inject/loader.js')
-
-// 使用 configureWebpack 配置 loader
-module.exports = defineConfig({
-  configureWebpack: {
-    module: {
-      rules: [
-        {
-          test: /\.vue$/,
-          loader: uniGlobalComponentInject,
-          options: {
-            platforms: ['app-plus']
-          }
-        }
-      ]
-    }
-  }
+export default defineConfig({
+  plugins: [
+    uni(),
+    uniGlobalComponentPlugin({
+      platforms: ['app-plus']
+    })
+  ]
 })
 
-/* 或者 使用 chainWebpack 配置 loader */
-
-// module.exports = defineConfig({
-//   chainWebpack: (config) => {
-//     config.module
-//       .rule('vue')
-//       .use('uni-global-component-inject')
-//       .loader(uniGlobalComponentInject)
-//       .tap((options) => ({
-//         ...options,
-//         platforms: ['app-plus'],
-//       }));
-//   },
-// });
 ```
 
 ### 第三步 创建全局组件 `CustomModal`
@@ -79,7 +54,6 @@ module.exports = defineConfig({
 ### 第五步 重新编译项目
 > 重新编译项目，在每个页面都会自动注入 `<CustomModal />` 组件了。
 
-
 ## 案例运行
 <details>
 <summary>点击查看 项目示例</summary>
@@ -90,7 +64,6 @@ module.exports = defineConfig({
 - `packages/global-inject` 目录下是 loader/plugin 的源码
 
 </details>
-
 
 ## 配置选项
 ### vue.config.js 配置选项
