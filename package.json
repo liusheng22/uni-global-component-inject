@@ -1,7 +1,9 @@
 {
   "name": "global-component-inject-monorepo",
   "type": "commonjs",
-  "version": "1.0.0",
+  "version": "1.1.0",
+  "description": "演示如何在 uniapp(uni-app) 项目中使用全局组件注入",
+  "author": "liusheng",
   "workspaces": ["packages/*", "packages/playground/*"],
   "private": true,
   "license": "MIT",

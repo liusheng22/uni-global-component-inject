@@ -1,7 +1,7 @@
 {
   "name": "uni-global-component-inject",
   "type": "commonjs",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "uniapp(uni-app) 全局组件注入",
   "author": "liusheng",
   "license": "MIT",
