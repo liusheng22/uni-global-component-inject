@@ -4,16 +4,9 @@
 这是一个 monorepo 的示例项目，演示了如何使用 `uni-global-component-inject` 插件来实现全局组件的注入。
 
 ## 效果展示
-<div style="display: flex; justify-content: space-between;">
-  <div style="width: 48%; text-align: center;">
-    <img src="./images/hello.png" alt="全局弹窗组件">
-    <p style="margin-top: 8px;">全局弹窗组件/全局页脚提示组件</p>
-  </div>
-   <div style="width: 48%; text-align: center;">
-    <img src="./images/movable.png" alt="全局移动组件">
-    <p style="margin-top: 8px;">全局弹窗组件/全局可移动组件</p>
-  </div>
-</div>
+| ![全局弹窗组件](./images/hello.png) | ![全局移动组件](./images/movable.png) |
+|:--:|:--:|
+| 全局弹窗组件/全局页脚提示组件 | 全局弹窗组件/全局可移动组件 |
 
 ## 运行示例项目
 ### 1. 克隆本仓库到本地
