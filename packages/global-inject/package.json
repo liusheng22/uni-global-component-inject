@@ -2,25 +2,27 @@
   "name": "uni-global-component-inject",
   "type": "commonjs",
   "version": "1.0.0",
-  "description": "uni-app 全局组件注入",
+  "description": "uniapp(uni-app) 全局组件注入",
   "author": "liusheng",
   "license": "MIT",
   "homepage": "https://github.com/liusheng22/uni-global-component-inject",
   "repository": {
     "type": "git",
-    "url": "https://github.com/liusheng22/uni-global-component-inject"
+    "url": "https://github.com/liusheng22/uni-global-component-inject/blob/main/packages/global-inject"
   },
   "keywords": [
+    "uniapp 全局组件",
+    "uni-app 全局组件",
+    "全局组件",
+    "全局弹窗",
+    "全局注入",
+    "全局组件注入",
     "uni-app",
     "uni",
     "uniapp",
     "global-component",
     "global-component-inject",
-    "easycom",
-    "全局组件",
-    "全局弹窗",
-    "全局注入",
-    "全局组件注入"
+    "easycom"
   ],
   "exports": {
     ".": "./index.js",

@@ -1,6 +1,6 @@
 # 简介
 
-`uni-global-component-inject` 是一个专为 UniApp 项目设计的工具，帮助开发者通过 pages.json 配置全局组件的注入。它支持 Vue 2（基于 Webpack）和 Vue 3（基于 Vite）的 UniApp 项目，让 `App` 也能够注册全局组件。
+一个为 `uniapp(uni-app)` 项目注入全局组件的工具，它支持 `Vue2`（基于 Webpack）和 `Vue3`（基于 Vite）项目，让你的 `App` 也能够拥有全局组件。
 
 ## 特性
 
@@ -9,7 +9,7 @@
 - 自动合并组件的脚本、模板和样式。
 - 提供灵活的排除机制，允许特定页面跳过注入。
 
-## 配置过程 [切换到VUE3配置](README_VUE3.md)
+## 配置过程 [切换到VUE3配置](https://github.com/liusheng22/uni-global-component-inject/blob/main/packages/global-inject/README_VUE3.md)
 ### 第一步 安装依赖
 ```bash
 npm install uni-global-component-inject -D

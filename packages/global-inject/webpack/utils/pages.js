@@ -24,14 +24,7 @@ const generateHtmlCode = (template, labelCode, regLabel) => {
 
 // 获取到需要插入的所有label标签
 const generateLabelCode = (labelArr, route) => {
-  // let labelCode = ''
-  // labelArr.forEach((label) => {
-  //   const labelCamelCase = toCamelCase(label)
-  //   labelCode += `<${label} ref="${labelCamelCase}"></${label}>`
-  // })
-  // return labelCode
   let labelCode = ''
-  // labelArr.forEach((label) => {
   labelArr.forEach((component, index) => {
     const { name, element, excludes } = component
     let tagsExcludes = excludes || []
@@ -45,10 +38,9 @@ const generateLabelCode = (labelArr, route) => {
       return
     }
     const labelCamelCase = toCamelCase(name)
-    // labelCode += `<${label} ref="${labelCamelCase}"></${label}>`
     labelCode += element
       ? `${element}`
-      : `<${name} ref="${labelCamelCase}"></${name}>`
+      : `<${name} ref="${labelCamelCase}" />`
   })
   return labelCode
 }
@@ -142,15 +134,12 @@ const getLabelConfig = (json) => {
   return {
     isInject,
     injectTags: finalInjectTags,
-    // (json.style && json.style.injectLabel) || injectLoader.injectLabel,
     injectCode: finalInjectCode,
-    // (json.style && json.style.injectCode) || injectLoader.injectCode,
     ele: (json.style && json.style.rootEle) || injectLoader.rootEle
   }
 }
 
-// 反序列化page.json并缓存，
-// 并根据page.json分析是否有效并且需要后续逻辑处理
+// 反序列化page.json并缓存，并根据page.json分析是否有效并且需要后续逻辑处理
 const initPages = (that) => {
   let pagesPath = (that.query || {}).pagesPath
   if (!pagesPath) {
@@ -167,16 +156,12 @@ const initPages = (that) => {
 // 给非必填项设置缺省值，缺少主要对象返回false
 const initInjectLoader = () => {
   injectLoader = pagesJson.injectLoader || {}
-  // label：全局标签配置
-  // rootEle：根元素的类型,也支持正则,如匹配任意标签.*
+  // injectTags：全局标签配置
   injectLoader.injectTags = injectLoader.injectTags || []
+  // injectCode：全局代码配置
   injectLoader.injectCode = injectLoader.injectCode || []
+  // rootEle：根元素的类型,也支持正则,如匹配任意标签.*
   injectLoader.rootEle = injectLoader.rootEle || 'view'
-  // const { injectLabel, injectCode } = injectLoader
-
-  // 无配置则不予处理
-  // const effective = injectCode.length || injectLabel.length
-  // return effective
   return true
 }
 
