@@ -15,7 +15,7 @@
 pnpm add uni-global-component-inject -D
 ```
 ### 第二步 配置 Loader
-在 vue.config.js 中配置 Loader：
+在 vite.config.js 中配置 plugin：
 ```javascript
 import uni from '@dcloudio/vite-plugin-uni'
 import uniGlobalComponentPlugin from 'uni-global-component-inject/vite'
@@ -67,14 +67,14 @@ export default defineConfig({
 </details>
 
 ## 配置选项
-### vue.config.js 配置选项
+### vite.config.js 配置选项
 ```javascript
-options: {
+uniGlobalComponentPlugin({
   // 必填：指定的平台才生效。例如 ['app-plus','mp-weixin']
   platforms: ['app-plus'],
   // 可选：指定自定义的 pages.json 文件路径（默认值为 'src/pages.json'）
   pagesPath: path.resolve(__dirname, './src/pages.json')
-}
+})
 ```
 
 ### pages.json 配置选项
