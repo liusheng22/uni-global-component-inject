@@ -56,9 +56,18 @@ function buildSFCContent(descriptor, templateContent) {
   }
   if (descriptor.styles?.length) {
     descriptor.styles.forEach((style) => {
-      content += `<style${style.scoped ? ' scoped' : ''}>\n${
-        style.content
-      }\n</style>\n`
+      const styleAttrs = Object.entries(style.attrs || {})
+        .map(([key, value]) => key === true ? key : `${key}="${value}"`)
+        .join(' ')
+      content += `<style ${styleAttrs}>\n${style.content}\n</style>\n`
+    })
+  }
+  if (descriptor.customBlocks?.length) {
+    descriptor.customBlocks.forEach((block) => {
+      const blockAttrs = Object.entries(block.attrs || {})
+        .map(([key, value]) => key === true ? key : `${key}="${value}"`)
+        .join(' ')
+      content += `<${block.type || block.tag} ${blockAttrs}>\n${block.content}\n</${block.type || block.tag}>\n`
     })
   }
   return content
